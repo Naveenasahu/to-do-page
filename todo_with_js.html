@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>sample todo</title>
+        <style>
+            .bg {
+                
+                background-color: rgb(102, 217, 255);
+                border-radius: 5px;
+                padding: 5px;
+                text-align: center;
+                margin-top: 20%;
+            }
+
+            .task-container {
+                width: 50%;
+                margin: auto;
+            }
+
+            .task {
+
+                text-align: center;
+                width: 50%;
+                background-color: #f4f4f4;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 3px;
+                margin: 10px 0;
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                color: #333;
+                display: flex;
+                position: relative;
+                height:30px;
+                left:25%;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .delete-btn {
+                background-color: red;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 5px 10px;
+                cursor: pointer;
+            }
+
+            .delete-btn:hover {
+                background-color: darkred;
+            }
+
+        </style>
+        <script>
+            function fun(event) {
+                event.preventDefault();
+                let ele = document.getElementById("txt");
+                let variable = document.createElement('div');
+                variable.classList.add('task');
+                let taskText = document.createElement('p');
+                taskText.textContent = ele.value;
+                let deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.classList.add('delete-btn');
+                deleteBtn.onclick = function() {
+                    variable.remove();
+                };
+                variable.appendChild(taskText);
+                variable.appendChild(deleteBtn);
+                const cont = document.getElementById("div");
+                cont.appendChild(variable);
+                ele.value = '';
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="bg">
+            <div>
+                <form>
+                    <input type="text" placeholder="Enter task" id="txt">
+                    <button type="submit" style="background-color: royalblue" onclick="fun(event)">Add</button>
+                </form>
+            </div>
+            <div id="div">
+                <!-- New tasks will be added here -->
+            </div>
+        </div>
+    </body>
+</html>
